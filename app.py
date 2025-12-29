@@ -3,7 +3,7 @@ import pandas as pd
 import random  # برای شبیه‌سازی کد تأیید
 import smtplib  # برای ارسال ایمیل
 from email.mime.text import MIMEText
-from sentence_transformers import SentenceTransformer, util
+#from sentence_transformers import SentenceTransformer, util
 import google.generativeai as genai
 
 # تنظیم API key برای Gemini
@@ -11,7 +11,7 @@ genai.configure(api_key="AIzaSyA2atuzXvtOJCssi0qN0iEVmrq0gHSj_f8")  # اینجا
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # مدل برای embeddings (برای matching)
-embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+#embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # ذخیره داده‌ها موقت (session state) - بعداً دیتابیس واقعی اضافه کن
 if 'users' not in st.session_state:
@@ -131,17 +131,18 @@ else:
                     user_data['resume'] = analyze_resume(file_content)
             
             # matching با embeddings
-            user_text = ' '.join(str(v) for v in user_data.values())
-            user_emb = embedding_model.encode(user_text)
-            matches = []
-            for req in st.session_state.requirements:
-                req_text = ' '.join(str(v) for v in req.values())
-                req_emb = embedding_model.encode(req_text)
-                similarity = util.cos_sim(user_emb, req_emb)[0][0]
-                if similarity > 0.5:  # آستانه تشابه
-                    matches.append(req)
+            #user_text = ' '.join(str(v) for v in user_data.values())
+            #user_emb = embedding_model.encode(user_text)
+            #matches = []
+            #for req in st.session_state.requirements:
+                #req_text = ' '.join(str(v) for v in req.values())
+                #req_emb = embedding_model.encode(req_text)
+                #similarity = util.cos_sim(user_emb, req_emb)[0][0]
+                #if similarity > 0.5:  # آستانه تشابه
+                    #matches.append(req)
             
-            response = f"مچ‌های یافت‌شده: {len(matches)}" if matches else "هیچ مچی یافت نشد."
+            #response = f"مچ‌های یافت‌شده: {len(matches)}" if matches else "هیچ مچی یافت نشد."
+             response = f"در حال حاضر {len(st.session_state.requirements)} نیازمندی شغلی ذخیره شده است. به زودی matching هوشمند فعال می‌شه!"
         
         else:
             response = "لطفاً جزئیات بیشتری بدهید یا نقش خود را چک کنید."
