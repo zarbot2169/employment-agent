@@ -146,11 +146,10 @@ else:
 
     response = f"در حال حاضر {len(st.session_state.requirements)} نیازمندی شغلی ذخیره شده است. به زودی matching هوشمند فعال می‌شود!"
         
-    else:
-        response = "لطفاً جزئیات بیشتری بدهید یا نقش خود را چک کنید."
-        
-        st.session_state.chat_history.append(f"AI: {response}")
-        st.write(response)
-
-    if st.button("خروج"):
-        st.session_state.current_user = None
+        else:
+                    response = "لطفاً جزئیات بیشتری بدهید یا نقش خود را چک کنید."
+     
+                st.session_state.chat_history.append(f"AI: {response}")
+                st.write(response)
+            if st.button("خروج"):
+                st.session_state.current_user = None
