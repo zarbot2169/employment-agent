@@ -142,7 +142,9 @@ else:
                     #matches.append(req)
             
             #response = f"مچ‌های یافت‌شده: {len(matches)}" if matches else "هیچ مچی یافت نشد."
-             response = f"در حال حاضر {len(st.session_state.requirements)} نیازمندی شغلی ذخیره شده است. به زودی matching هوشمند فعال می‌شه!"
+    
+
+    response = f"در حال حاضر {len(st.session_state.requirements)} نیازمندی شغلی ذخیره شده است. به زودی matching هوشمند فعال می‌شود!"
         
         else:
             response = "لطفاً جزئیات بیشتری بدهید یا نقش خود را چک کنید."
