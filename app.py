@@ -83,8 +83,8 @@ else:
     if user_input:
         st.session_state.chat_history.append(f"کاربر: {user_input}")
 
-        # تشخیص意图 با Gemini
-        intent_prompt = f"این پیام را تحلیل کن: '{user_input}'.意图: وارد کردن نیازمندی، جستجوی شغل، یا خارج از حیطه؟"
+        # تشخیصintent با Gemini
+        intent_prompt = f"این پیام را تحلیل کن: '{user_input}'.intent: وارد کردن نیازمندی، جستجوی شغل، یا خارج از حیطه؟"
         intent_response = model.generate_content(intent_prompt).text
 
         if "خارج از حیطه" in intent_response:
